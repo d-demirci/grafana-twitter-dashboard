@@ -1,0 +1,18 @@
+curl -XPUT "http://192.168.56.101:9200/idx_twp_v2" -d'{                                 
+   "mappings": {
+      "_default_": {
+         "date_detection": false,
+         "dynamic_templates": [
+            {
+               "dates": {
+                  "match": "timestamp_ms",
+                  "match_pattern": "regex",
+                  "mapping": {
+                     "type": "date"                              
+                  }
+               }
+            }
+         ]
+      }
+   }
+}' 
